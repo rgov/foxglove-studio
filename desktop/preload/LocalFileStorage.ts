@@ -6,8 +6,9 @@ import { ipcRenderer } from "electron";
 import { promises as fs } from "fs";
 import path from "path";
 
-import { Storage, StorageContent } from "@foxglove-studio/app/OsContext";
 import Logger from "@foxglove/log";
+
+import { Storage, StorageContent } from "../common/types";
 
 const log = Logger.getLogger(__filename);
 
