@@ -78,7 +78,7 @@ export function makeConfig(
             {
               loader: "ts-loader",
               options: {
-                compilerOptions: { noEmit: true },
+                // compilerOptions: { noEmit: true },
                 transpileOnly: true,
                 // https://github.com/TypeStrong/ts-loader#onlycompilebundledfiles
                 // avoid looking at files which are not part of the bundle
