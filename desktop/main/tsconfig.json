@@ -1,7 +1,24 @@
 {
   "extends": "@foxglove/tsconfig/tsconfig.base.json",
-  "include": ["./**/*"],
+  "include": [
+    "./**/*",
+    // These includes are added to ensure that fork-ts-checker correctly typechecks changed files:
+    // https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/issues/611
+    "../../app/*.ts",
+    "../../package.json",
+    "../../packages/log/src/**/*"
+  ],
   "compilerOptions": {
-    "noEmit": true
+    "rootDir": "../..",
+    "noEmit": true,
+
+    // These paths are added to ensure that fork-ts-checker correctly typechecks changed files.
+    // Using these resolutions will force TS to give us an error if we forgot to add these files to
+    // one of our tsconfig "include"s.
+    // https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/issues/611
+    "paths": {
+      "@foxglove-studio/app/*": ["../../app/*"],
+      "@foxglove/*": ["../../packages/*", "../../packages/foxglove/*"]
+    }
   }
 }
