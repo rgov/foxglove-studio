@@ -14,7 +14,6 @@
 import UrlSearchParams from "url-search-params";
 import util from "util";
 
-import { resetLogEventForTests } from "@foxglove-studio/app/util/logEvent";
 import setImmediate from "@foxglove-studio/app/util/setImmediate";
 
 process.env.WASM_LZ4_ENVIRONMENT = "NODE";
@@ -63,6 +62,3 @@ class ResizeObserverMock {
 }
 
 global.ResizeObserver = ResizeObserverMock;
-
-// Set logEvent up with a default implementation
-resetLogEventForTests();

@@ -81,7 +81,6 @@ import {
   isTabPanel,
   updateTabPanelLayout,
 } from "@foxglove-studio/app/util/layout";
-import logEvent, { getEventTags, getEventNames } from "@foxglove-studio/app/util/logEvent";
 import { colors } from "@foxglove-studio/app/util/sharedStyleConstants";
 
 import styles from "./Panel.module.scss";

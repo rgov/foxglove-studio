@@ -13,8 +13,9 @@
 
 import { sortBy, sortedUniq } from "lodash";
 
+import { useAnalytics } from "@foxglove-studio/app/context/AnalyticsContext";
+import { AppEvent } from "@foxglove-studio/app/services/Analytics";
 import inAutomatedRunMode from "@foxglove-studio/app/util/inAutomatedRunMode";
-import logEvent, { getEventNames, getEventTags } from "@foxglove-studio/app/util/logEvent";
 import promiseTimeout from "@foxglove-studio/app/util/promiseTimeout";
 import sendNotification from "@foxglove-studio/app/util/sendNotification";
 
@@ -24,6 +25,8 @@ export type FramePromise = { name: string; promise: Promise<void> };
 export const MAX_PROMISE_TIMEOUT_TIME_MS = inAutomatedRunMode() ? 30000 : 5000;
 
 export async function pauseFrameForPromises(promises: FramePromise[]): Promise<void> {
+  const analytics = useAnalytics();
+
   try {
     await promiseTimeout(
       Promise.all(promises.map(({ promise }) => promise)),
@@ -39,12 +42,12 @@ export async function pauseFrameForPromises(promises: FramePromise[]): Promise<v
 
     // Log the panelTypes so we can track which panels timeout regularly.
     const sortedUniquePanelTypes = sortedUniq(sortBy(promises.map(({ name }) => name)));
+
     const name = getEventNames().PAUSE_FRAME_TIMEOUT;
     const type = getEventTags().PANEL_TYPES;
     if (name != undefined && type != undefined) {
-      logEvent({
-        name,
-        tags: { [type]: sortedUniquePanelTypes },
+      analytics.logEvent(AppEvent.PAUSE_FRAME_TIMEOUT, {
+        panelTypes: sortedUniquePanelTypes,
       });
     }
   }

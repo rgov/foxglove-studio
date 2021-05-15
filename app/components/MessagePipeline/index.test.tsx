@@ -20,7 +20,6 @@ import { act } from "react-dom/test-utils";
 import { GlobalVariables } from "@foxglove-studio/app/hooks/useGlobalVariables";
 import { PlayerPresence, PlayerStateActiveData } from "@foxglove-studio/app/players/types";
 import delay from "@foxglove-studio/app/util/delay";
-import { initializeLogEvent, resetLogEventForTests } from "@foxglove-studio/app/util/logEvent";
 import sendNotification from "@foxglove-studio/app/util/sendNotification";
 import tick from "@foxglove-studio/app/util/tick";
 
@@ -481,15 +480,17 @@ describe("MessagePipelineProvider/useMessagePipeline", () => {
 
     beforeEach(async () => {
       logger = jest.fn();
+      /*
       initializeLogEvent(
         logger,
         { PAUSE_FRAME_TIMEOUT: "pause_frame_timeout" },
         { PANEL_TYPES: "panel_types" },
       );
+      */
     });
 
     afterEach(() => {
-      resetLogEventForTests();
+      //resetLogEventForTests();
     });
 
     it("frames automatically resolve without calling pauseFrame", async () => {

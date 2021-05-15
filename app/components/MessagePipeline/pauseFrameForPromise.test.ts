@@ -13,7 +13,6 @@
 
 import delay from "@foxglove-studio/app/util/delay";
 import inAutomatedRunMode from "@foxglove-studio/app/util/inAutomatedRunMode";
-import { initializeLogEvent, resetLogEventForTests } from "@foxglove-studio/app/util/logEvent";
 import sendNotification from "@foxglove-studio/app/util/sendNotification";
 import signal from "@foxglove-studio/app/util/signal";
 

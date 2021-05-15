@@ -10,7 +10,6 @@ import { PanelSelection } from "@foxglove-studio/app/components/PanelList";
 import { usePanelSettings } from "@foxglove-studio/app/context/PanelSettingsContext";
 import { State as ReduxState } from "@foxglove-studio/app/reducers";
 import { getPanelIdForType } from "@foxglove-studio/app/util/layout";
-import logEvent, { getEventNames, getEventTags } from "@foxglove-studio/app/util/logEvent";
 
 export default function useAddPanel(): (selection: PanelSelection) => void {
   const dispatch = useDispatch();
@@ -22,12 +21,6 @@ export default function useAddPanel(): (selection: PanelSelection) => void {
       dispatch(addPanel({ id, layout, config, relatedConfigs }));
       dispatch(setSelectedPanelIds([id]));
       openPanelSettings();
-
-      const name = getEventNames().PANEL_ADD;
-      const panelType = getEventTags().PANEL_TYPE;
-      if (name != undefined && panelType != undefined) {
-        logEvent({ name: name, tags: { [panelType]: type } });
-      }
     },
     [dispatch, layout, openPanelSettings],
   );

@@ -11,7 +11,6 @@ import ReactDOM from "react-dom";
 import "@foxglove-studio/app/styles/global.scss";
 
 import installDevtoolsFormatters from "@foxglove-studio/app/util/installDevtoolsFormatters";
-import { initializeLogEvent } from "@foxglove-studio/app/util/logEvent";
 import overwriteFetch from "@foxglove-studio/app/util/overwriteFetch";
 import waitForFonts from "@foxglove-studio/app/util/waitForFonts";
 import { APP_VERSION } from "@foxglove-studio/app/version";
@@ -61,8 +60,6 @@ async function main() {
 
   // consider moving waitForFonts into App to display an app loading screen
   await waitForFonts();
-
-  initializeLogEvent(() => undefined, {}, {});
 
   ReactDOM.render(<Root />, rootEl, () => {
     // Integration tests look for this console log to indicate the app has rendered once

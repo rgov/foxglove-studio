@@ -47,7 +47,6 @@ import { getPanelTypeFromMosaic } from "@foxglove-studio/app/components/PanelToo
 import { usePanelSettings } from "@foxglove-studio/app/context/PanelSettingsContext";
 import { State } from "@foxglove-studio/app/reducers";
 import frameless from "@foxglove-studio/app/util/frameless";
-import logEvent, { getEventNames, getEventTags } from "@foxglove-studio/app/util/logEvent";
 import { colors } from "@foxglove-studio/app/util/sharedStyleConstants";
 
 import styles from "./index.module.scss";
@@ -99,6 +98,7 @@ function StandardMenuItems({ tabId, isUnknownPanel }: { tabId?: string; isUnknow
         tags: { [type]: getPanelType() },
       });
     }
+
     actions.closePanel({
       tabId,
       root: mosaicActions.getRoot() as any,
