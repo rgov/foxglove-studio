@@ -26,7 +26,7 @@
     // one of our tsconfig "include"s.
     // https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/issues/611
     "paths": {
-      "@foxglove-studio/app/*": ["../../app/*"],
+      "@foxglove/studio-base/*": ["../../app/*"],
       "@foxglove/*": ["../../packages/*", "../../packages/foxglove/*"]
     }
   }
