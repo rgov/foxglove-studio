@@ -2174,7 +2174,7 @@ __metadata:
     "@storybook/addon-actions": 6.2.9
     "@storybook/addon-essentials": 6.2.9
     "@storybook/builder-webpack5": 6.2.9
-    "@storybook/react": 6.2.9
+    "@storybook/react": "patch:@storybook/react@6.2.9#../patches/storybook-react.patch"
     "@testing-library/dom": 7.31.0
     "@testing-library/react": 11.2.7
     "@testing-library/react-hooks": 5.1.2
@@ -4095,7 +4095,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:6.2.9":
+"@storybook/react@6.2.9":
   version: 6.2.9
   resolution: "@storybook/react@npm:6.2.9"
   dependencies:
@@ -4136,6 +4136,50 @@ __metadata:
     start-storybook: bin/index.js
     storybook-server: bin/index.js
   checksum: c1ef1147a92d5c5945f2ee3e253ca7228ebb31944820cb058693f18f632775229e6733f932ca689994cee22188e2df94c9b0562b4d6993496d2869d62ae63a57
+  languageName: node
+  linkType: hard
+
+"@storybook/react@patch:@storybook/react@6.2.9#../patches/storybook-react.patch::locator=%40foxglove%2Fstudio-base%40workspace%3Aapp":
+  version: 6.2.9
+  resolution: "@storybook/react@patch:@storybook/react@npm%3A6.2.9#../patches/storybook-react.patch::version=6.2.9&hash=7e209e&locator=%40foxglove%2Fstudio-base%40workspace%3Aapp"
+  dependencies:
+    "@babel/preset-flow": ^7.12.1
+    "@babel/preset-react": ^7.12.10
+    "@pmmmwh/react-refresh-webpack-plugin": ^0.4.3
+    "@storybook/addons": 6.2.9
+    "@storybook/core": 6.2.9
+    "@storybook/core-common": 6.2.9
+    "@storybook/node-logger": 6.2.9
+    "@storybook/semver": ^7.3.2
+    "@types/webpack-env": ^1.16.0
+    babel-plugin-add-react-displayname: ^0.0.5
+    babel-plugin-named-asset-import: ^0.3.1
+    babel-plugin-react-docgen: ^4.2.1
+    core-js: ^3.8.2
+    global: ^4.4.0
+    lodash: ^4.17.20
+    prop-types: ^15.7.2
+    react-dev-utils: ^11.0.3
+    react-docgen-typescript-plugin: ^0.6.2
+    react-refresh: ^0.8.3
+    read-pkg-up: ^7.0.1
+    regenerator-runtime: ^0.13.7
+    ts-dedent: ^2.0.0
+    webpack: 4
+  peerDependencies:
+    "@babel/core": ^7.11.5
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    "@babel/core":
+      optional: true
+    typescript:
+      optional: true
+  bin:
+    build-storybook: bin/build.js
+    start-storybook: bin/index.js
+    storybook-server: bin/index.js
+  checksum: d7a12e05b30c4487dadbc2760e2d4acbd10a333edeb2a9d3c7aee09d055d9091a8fe66593aabbb1010d3fa686e2c467d0bc3050d1cae9cfa1cc17109758ab1e3
   languageName: node
   linkType: hard
 

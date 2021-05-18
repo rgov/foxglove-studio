@@ -11,8 +11,10 @@
 //   found at http://www.apache.org/licenses/LICENSE-2.0
 //   You may not use this file except in compliance with the License.
 import cloneDeep from "lodash/cloneDeep";
-import { useState, useCallback, ComponentProps } from "react";
+import { useState, useCallback, ComponentProps, useEffect } from "react";
 import TestUtils from "react-dom/test-utils";
+
+import signal from "@foxglove/studio-base/util/signal";
 
 import ChartComponent from ".";
 
@@ -164,6 +166,34 @@ export default {
     chromatic: {
       delay: 100,
     },
+  },
+};
+
+const sig = signal();
+export const Demo = (): JSX.Element => {
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    const int = setInterval(() => {
+      setVal((old) => old + 100);
+    }, 100);
+
+    const timeout = setTimeout(() => {
+      clearInterval(int);
+      sig.resolve();
+    }, 5000);
+
+    return () => {
+      clearInterval(int);
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  return <>{val}</>;
+};
+
+Demo.parameters = {
+  screenshot: {
+    signal: sig,
   },
 };
 
