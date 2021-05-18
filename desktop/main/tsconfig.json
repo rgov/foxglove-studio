@@ -6,6 +6,7 @@
     "../../package.json",
     // These includes are added to ensure that fork-ts-checker correctly typechecks changed files:
     // https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/issues/611
+    "../../app/AppSetting.ts",
     "../../packages/log/src/**/*"
   ],
   "compilerOptions": {
