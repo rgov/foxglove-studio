@@ -2171,9 +2171,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@foxglove/studio-base@workspace:app":
+"@foxglove/studio-base@workspace:packages/@foxglove/studio-base":
   version: 0.0.0-use.local
-  resolution: "@foxglove/studio-base@workspace:app"
+  resolution: "@foxglove/studio-base@workspace:packages/@foxglove/studio-base"
   dependencies:
     "@fluentui/react": 8.14.9
     "@fluentui/react-icons-mdl2": 1.1.0
@@ -10305,7 +10305,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "desktop@workspace:desktop"
   dependencies:
-    "@foxglove/studio-base": "workspace:app"
+    "@foxglove/studio-base": "workspace:packages/@foxglove/studio-base"
   languageName: unknown
   linkType: soft
 
@@ -25936,7 +25936,7 @@ typescript@4.2.4:
   version: 0.0.0-use.local
   resolution: "web@workspace:web"
   dependencies:
-    "@foxglove/studio-base": "workspace:app"
+    "@foxglove/studio-base": "workspace:packages/@foxglove/studio-base"
     "@types/copy-webpack-plugin": 8.0.0
     copy-webpack-plugin: 8.1.1
     webpack: 5.37.0
