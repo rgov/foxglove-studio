@@ -13,9 +13,9 @@
 
 import memoizeWeak from "memoize-weak";
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { MessageReader } from "rosbag";
 import { v4 as uuidv4 } from "uuid";
 
+import { UseBlocksByTopic, MessageBlock } from "@foxglove/studio";
 import {
   useMessagePipeline,
   MessagePipelineContext,
@@ -25,22 +25,6 @@ import { MemoryCacheBlock } from "@foxglove/studio-base/dataProviders/MemoryCach
 import useCleanup from "@foxglove/studio-base/hooks/useCleanup";
 import useShallowMemo from "@foxglove/studio-base/hooks/useShallowMemo";
 import { SubscribePayload, MessageEvent } from "@foxglove/studio-base/players/types";
-
-export type MessageBlock = {
-  readonly [topicName: string]: readonly MessageEvent<unknown>[];
-};
-
-export type BlocksForTopics = {
-  // TODO(jp/steel): Figure out whether it's better to return message definitions here. It's
-  // possible consumers will want to pass the readers through worker boundaries.
-  messageReadersByTopic: {
-    [topicName: string]: MessageReader;
-  };
-  // Semantics of blocks: Missing topics have not been cached. Adjacent elements are contiguous
-  // in time. Corresponding indexes in different BlocksForTopics cover the same time-range. Blocks
-  // are stored in increasing order of time.
-  blocks: readonly MessageBlock[];
-};
 
 // Memoization probably won't speed up the filtering appreciably, but preserves return identity.
 // That said, MessageBlock identity will change when the set of topics changes, so consumers should
@@ -92,7 +76,7 @@ const useSubscribeToTopicsForBlocks = (topics: readonly string[]) => {
 // so all consumers need a "regular playback" pipeline fallback for now.
 // Consumers can rely on the presence of topics in messageDefinitionsByTopic to signal whether
 // a fallback is needed for a given topic, because entries will not be populated in these cases.
-export function useBlocksByTopic(topics: readonly string[]): BlocksForTopics {
+export const useBlocksByTopic: UseBlocksByTopic = (topics: readonly string[]) => {
   const requestedTopics = useShallowMemo(topics);
 
   useSubscribeToTopicsForBlocks(requestedTopics);
@@ -109,4 +93,4 @@ export function useBlocksByTopic(topics: readonly string[]): BlocksForTopics {
   }, [allBlocks, requestedTopics]);
 
   return { messageReadersByTopic: {}, blocks };
-}
+};

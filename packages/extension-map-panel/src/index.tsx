@@ -28,7 +28,7 @@ type Props = {
   saveConfig: (config: Config) => void;
 };
 
-function MapPanel(props: Props) {
+function MapPanel(props: Props): JSX.Element {
   const { saveConfig, config } = props;
   const [center, setCenter] = useState<Point | undefined>();
   const { topics, playerId } = useDataSourceInfo();
