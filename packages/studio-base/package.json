@@ -1,6 +1,23 @@
 {
   "name": "@foxglove/studio-base",
+  "version": "0.0.1",
+  "description": "Core components of Foxglove Studio",
+  "license": "MPL-2.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foxglove/studio.git"
+  },
+  "author": {
+    "name": "Foxglove Technologies",
+    "email": "support@foxglove.dev"
+  },
+  "homepage": "https://foxglove.dev/",
+  "main": "src/index.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "chromatic": "chromatic --project-token $CHROMATIC_PROJECT_TOKEN --build-script-name storybook:build --exit-once-uploaded",
     "storybook:build": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' build-storybook"
