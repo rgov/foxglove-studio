@@ -11,7 +11,6 @@ import GlobalVariableSlider from "@foxglove/studio-base/panels/GlobalVariableSli
 import ImageViewPanel from "@foxglove/studio-base/panels/ImageView";
 import InternalLogs from "@foxglove/studio-base/panels/InternalLogs";
 import Internals from "@foxglove/studio-base/panels/Internals";
-import MapPanel from "@foxglove/studio-base/panels/Map";
 import NodePlayground from "@foxglove/studio-base/panels/NodePlayground";
 import NumberOfRenders from "@foxglove/studio-base/panels/NumberOfRenders";
 import ParametersPanel from "@foxglove/studio-base/panels/Parameters";
@@ -37,7 +36,6 @@ const visualization: PanelInfo[] = [
   { title: `Diagnostics – Detail`, component: DiagnosticStatusPanel },
   { title: `Diagnostics – Summary`, component: DiagnosticSummary },
   { title: "Image", component: ImageViewPanel },
-  { title: "Map", component: MapPanel },
   { title: "Parameters", component: ParametersPanel },
   { title: "Plot", component: Plot },
   { title: "Publish", component: Publish },

@@ -4,6 +4,7 @@
 
 import { Time } from "rosbag";
 
+// fixme - need to hoist these out of studio-base
 import { Topic } from "@foxglove/studio-base/players/types";
 import { RosDatatypes } from "@foxglove/studio-base/types/RosDatatypes";
 
