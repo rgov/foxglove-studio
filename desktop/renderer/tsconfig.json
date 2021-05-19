@@ -3,6 +3,7 @@
   "include": ["./**/*", "../common/**/*", "../../package.json"],
   "compilerOptions": {
     "rootDir": "../../",
+    "outDir": "./dist",
     // "noEmit": true,
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "es2020"]

@@ -12764,7 +12764,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fork-ts-checker-webpack-plugin@npm:6.2.9, fork-ts-checker-webpack-plugin@npm:^6.0.4":
+"fork-ts-checker-webpack-plugin@npm:6.2.10":
+  version: 6.2.10
+  resolution: "fork-ts-checker-webpack-plugin@npm:6.2.10"
+  dependencies:
+    "@babel/code-frame": ^7.8.3
+    "@types/json-schema": ^7.0.5
+    chalk: ^4.1.0
+    chokidar: ^3.4.2
+    cosmiconfig: ^6.0.0
+    deepmerge: ^4.2.2
+    fs-extra: ^9.0.0
+    glob: ^7.1.6
+    memfs: ^3.1.2
+    minimatch: ^3.0.4
+    schema-utils: 2.7.0
+    semver: ^7.3.2
+    tapable: ^1.0.0
+  checksum: 2c067e05dd138cf1136f45d936baad59ca494521054c91547e915cc4b4e10e367634cf8241899cb76d1516f03d7d3b0711aa21cb552ed17863bf93a868184e91
+  languageName: node
+  linkType: hard
+
+"fork-ts-checker-webpack-plugin@npm:^6.0.4":
   version: 6.2.9
   resolution: "fork-ts-checker-webpack-plugin@npm:6.2.9"
   dependencies:
@@ -12886,7 +12907,7 @@ __metadata:
     eslint-plugin-prettier: 3.4.0
     eslint-plugin-react: 7.23.2
     eslint-plugin-react-hooks: 4.2.0
-    fork-ts-checker-webpack-plugin: 6.2.9
+    fork-ts-checker-webpack-plugin: 6.2.10
     html-webpack-plugin: 5.3.1
     jest: 27.0.0-next.8
     jest-canvas-mock: 2.3.1
