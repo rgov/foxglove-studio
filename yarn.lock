@@ -2322,6 +2322,8 @@ __metadata:
 "@foxglove/studio@workspace:packages/studio":
   version: 0.0.0-use.local
   resolution: "@foxglove/studio@workspace:packages/studio"
+  dependencies:
+    dts-bundle-generator: 5.9.0
   languageName: unknown
   linkType: soft
 
@@ -8825,6 +8827,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cliui@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "cliui@npm:6.0.0"
+  dependencies:
+    string-width: ^4.2.0
+    strip-ansi: ^6.0.0
+    wrap-ansi: ^6.2.0
+  checksum: e59d0642946dd300b1b002e69f43b32d55e682c84f6f2073705ffe77477b400aeabd4f4795467db0771a21d35ee070071f6a31925e4f83b52a7fe1f5c8e6e860
+  languageName: node
+  linkType: hard
+
 "cliui@npm:^7.0.2":
   version: 7.0.4
   resolution: "cliui@npm:7.0.4"
@@ -10853,6 +10866,18 @@ __metadata:
   peerDependencies:
     react: ">=16.12.0"
   checksum: 208ac623ef89430bbc0e16f1a3e6a4f64249b383b005ad97d68fd40a5362909180fceef95c681827db2b0b573d268cfba18e18c6796b00bbdbcf52d1632cbd90
+  languageName: node
+  linkType: hard
+
+"dts-bundle-generator@npm:5.9.0":
+  version: 5.9.0
+  resolution: "dts-bundle-generator@npm:5.9.0"
+  dependencies:
+    typescript: ">=3.0.1"
+    yargs: ^15.3.1
+  bin:
+    dts-bundle-generator: dist/bin/dts-bundle-generator.js
+  checksum: ae4dd8fc70ef3b22954eaa81c05be9987c9e193784c8c5c94b43d9b88fbd29207526d966161d7efb6612d139d59cc5566c15313bc6aef6cbcc72555cb7bec2be
   languageName: node
   linkType: hard
 
@@ -25134,7 +25159,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-typescript@4.2.4:
+"typescript@4.2.4, typescript@>=3.0.1":
   version: 4.2.4
   resolution: "typescript@npm:4.2.4"
   bin:
@@ -25144,7 +25169,7 @@ typescript@4.2.4:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.2.4#builtin<compat/typescript>":
+"typescript@patch:typescript@4.2.4#builtin<compat/typescript>, typescript@patch:typescript@>=3.0.1#builtin<compat/typescript>":
   version: 4.2.4
   resolution: "typescript@patch:typescript@npm%3A4.2.4#builtin<compat/typescript>::version=4.2.4&hash=a45b0e"
   bin:
@@ -26539,6 +26564,17 @@ typescript@4.2.4:
   languageName: node
   linkType: hard
 
+"wrap-ansi@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "wrap-ansi@npm:6.2.0"
+  dependencies:
+    ansi-styles: ^4.0.0
+    string-width: ^4.1.0
+    strip-ansi: ^6.0.0
+  checksum: ee4ed8b2994cfbdcd571f4eadde9d8ba00b8a74113483fe5d0c5f9e84054e43df8e9092d7da35c5b051faeca8fe32bd6cea8bf5ae8ad4896d6ea676a347e90af
+  languageName: node
+  linkType: hard
+
 "wrap-ansi@npm:^7.0.0":
   version: 7.0.0
   resolution: "wrap-ansi@npm:7.0.0"
@@ -26760,6 +26796,16 @@ typescript@4.2.4:
   languageName: node
   linkType: hard
 
+"yargs-parser@npm:^18.1.2":
+  version: 18.1.3
+  resolution: "yargs-parser@npm:18.1.3"
+  dependencies:
+    camelcase: ^5.0.0
+    decamelize: ^1.2.0
+  checksum: 33871721679053cc38165afc6356c06c3e820459589b5db78f315886105070eb90cbb583cd6515fa4231937d60c80262ca2b7c486d5942576802446318a39597
+  languageName: node
+  linkType: hard
+
 "yargs-parser@npm:^20.2.2, yargs-parser@npm:^20.2.3":
   version: 20.2.7
   resolution: "yargs-parser@npm:20.2.7"
@@ -26797,6 +26843,25 @@ typescript@4.2.4:
     y18n: ^4.0.0
     yargs-parser: ^13.1.2
   checksum: 92c612cd14a9217d7421ae4f42bc7c460472633bfc2e45f7f86cd614a61a845670d3bac7c2228c39df7fcecce0b8c12b2af65c785b1f757de974dcf84b5074f9
+  languageName: node
+  linkType: hard
+
+"yargs@npm:^15.3.1":
+  version: 15.4.1
+  resolution: "yargs@npm:15.4.1"
+  dependencies:
+    cliui: ^6.0.0
+    decamelize: ^1.2.0
+    find-up: ^4.1.0
+    get-caller-file: ^2.0.1
+    require-directory: ^2.1.1
+    require-main-filename: ^2.0.0
+    set-blocking: ^2.0.0
+    string-width: ^4.2.0
+    which-module: ^2.0.0
+    y18n: ^4.0.0
+    yargs-parser: ^18.1.2
+  checksum: dbf687d6b938f01bbf11e158dde6df906282b70cd9295af0217ee8cefbd83ad09d49fa9458d0d5325b0e66f03df954a38986db96f91e5b46ccdbbaf9a0157b23
   languageName: node
   linkType: hard
 
