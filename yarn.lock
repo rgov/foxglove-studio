@@ -2201,7 +2201,6 @@ __metadata:
     "@types/hammerjs": 2.0.39
     "@types/http-server": ^0.10.1
     "@types/js-yaml": 4.0.1
-    "@types/leaflet": 1.7.0
     "@types/memoize-weak": "workspace:packages/@types/memoize-weak"
     "@types/moment-duration-format": 2.2.2
     "@types/prettier": 2.2.3
@@ -2255,7 +2254,6 @@ __metadata:
     http-server: 0.12.3
     intervals-fn: 3.0.3
     js-yaml: 4.1.0
-    leaflet: 1.7.1
     lodash: 4.17.21
     memoize-weak: 1.0.2
     moment: 2.29.1
@@ -2279,7 +2277,6 @@ __metadata:
     react-input-autosize: 3.0.0
     react-is: 17.0.2
     react-json-tree: 0.15.0
-    react-leaflet: 3.2.0
     react-markdown: 6.0.2
     react-monaco-editor: 0.43.0
     react-mosaic-component: 5.0.0
@@ -12174,6 +12171,16 @@ __metadata:
   checksum: 1406da1f0c4b00b839497e4cdd0ec4303ce2ae349144b7c28064a5073c93ce8c08da4e8fb1bc5cb459ffcdff30a35fc0fe54344eb88320e70100c1baea6f195c
   languageName: node
   linkType: hard
+
+"extension-map-panel@workspace:packages/extension-map-panel":
+  version: 0.0.0-use.local
+  resolution: "extension-map-panel@workspace:packages/extension-map-panel"
+  dependencies:
+    "@types/leaflet": 1.7.0
+    leaflet: 1.7.1
+    react-leaflet: 3.2.0
+  languageName: unknown
+  linkType: soft
 
 "external-editor@npm:^3.0.3":
   version: 3.1.0
