@@ -8,17 +8,10 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { useThrottle } from "react-use";
 
 import Logger from "@foxglove/log";
-import {
-  useBlocksByTopic,
-  useDataSourceInfo,
-  useMessagesByTopic,
-} from "@foxglove/studio-base/PanelAPI";
+import { useBlocksByTopic, useDataSourceInfo, useMessagesByTopic } from "@foxglove/studio";
 import EmptyState from "@foxglove/studio-base/components/EmptyState";
-import Panel from "@foxglove/studio-base/components/Panel";
-import PanelToolbar from "@foxglove/studio-base/components/PanelToolbar";
 
 import FilteredPointMarkers from "./FilteredPointMarkers";
-import helpContent from "./index.help.md";
 import { NavSatFixMsg, Point } from "./types";
 
 import "leaflet/dist/leaflet.css";
@@ -140,7 +133,6 @@ function MapPanel(props: Props) {
   if (!center) {
     return (
       <>
-        <PanelToolbar floating helpContent={helpContent} />
         <EmptyState>Waiting for first gps point...</EmptyState>
       </>
     );
@@ -148,7 +140,6 @@ function MapPanel(props: Props) {
 
   return (
     <>
-      <PanelToolbar floating helpContent={helpContent} />
       <MapContainer
         whenCreated={setCurrentMap}
         preferCanvas
@@ -169,10 +160,4 @@ function MapPanel(props: Props) {
   );
 }
 
-MapPanel.panelType = "map";
-MapPanel.defaultConfig = {
-  zoomLevel: 10,
-} as Config;
-MapPanel.supportsStrictMode = false;
-
-export default Panel(MapPanel);
+export default MapPanel;
