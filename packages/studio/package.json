@@ -1,10 +1,4 @@
 {
   "name": "@foxglove/studio",
-  "types": "src/index.d.ts",
-  "scripts": {
-    "gen-declarations": "dts-bundle-generator -o index.d.ts src/index.ts"
-  },
-  "devDependencies": {
-    "dts-bundle-generator": "5.9.0"
-  }
+  "types": "src/index.d.ts"
 }
