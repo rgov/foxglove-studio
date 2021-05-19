@@ -9,7 +9,7 @@ import os from "os";
 
 import { PreloaderSockets } from "@foxglove/electron-socket/preloader";
 import Logger from "@foxglove/log";
-import { NetworkInterface, OsContext } from "@foxglove/studio-base/OsContext";
+import { NetworkInterface, OsContext } from "@foxglove/studio-base/src/OsContext";
 
 import pkgInfo from "../../package.json";
 import { Desktop, ForwardedMenuEvent, NativeMenuBridge, Storage } from "../common/types";
