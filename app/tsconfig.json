@@ -9,7 +9,7 @@
     "lib": ["dom", "dom.iterable", "es2020"],
     "paths": {
       // This is only needed for vscode import suggestions
-      "@foxglove-studio/app/*": ["./*"]
+      "@foxglove/studio-base/*": ["./*"]
     }
   },
   "references": [

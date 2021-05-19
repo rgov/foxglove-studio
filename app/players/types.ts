@@ -11,18 +11,19 @@
 //   found at http://www.apache.org/licenses/LICENSE-2.0
 //   You may not use this file except in compliance with the License.
 
-import { Time, RosMsgDefinition } from "rosbag";
+import { Time } from "rosbag";
 
-import { BlockCache } from "@foxglove-studio/app/dataProviders/MemoryCacheDataProvider";
+import { RosMsgDefinition } from "@foxglove/rosmsg";
+import { BlockCache } from "@foxglove/studio-base/dataProviders/MemoryCacheDataProvider";
 import {
   AverageThroughput,
   DataProviderStall,
   InitializationPerformanceMetadata,
-} from "@foxglove-studio/app/dataProviders/types";
-import { GlobalVariables } from "@foxglove-studio/app/hooks/useGlobalVariables";
-import { RosDatatypes } from "@foxglove-studio/app/types/RosDatatypes";
-import { Range } from "@foxglove-studio/app/util/ranges";
-import { TimestampMethod } from "@foxglove-studio/app/util/time";
+} from "@foxglove/studio-base/dataProviders/types";
+import { GlobalVariables } from "@foxglove/studio-base/hooks/useGlobalVariables";
+import { RosDatatypes } from "@foxglove/studio-base/types/RosDatatypes";
+import { Range } from "@foxglove/studio-base/util/ranges";
+import { TimestampMethod } from "@foxglove/studio-base/util/time";
 
 export type MessageDefinitionsByTopic = {
   [topic: string]: string;

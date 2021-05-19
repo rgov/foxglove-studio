@@ -3,10 +3,14 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 import { isEqual, sortBy } from "lodash";
-import { RosMsgDefinition, Time } from "rosbag";
+import { Time } from "rosbag";
 import { v4 as uuidv4 } from "uuid";
 
-import OsContextSingleton from "@foxglove-studio/app/OsContextSingleton";
+import { Sockets } from "@foxglove/electron-socket/renderer";
+import Logger from "@foxglove/log";
+import { RosNode, TcpSocket } from "@foxglove/ros1";
+import { RosMsgDefinition } from "@foxglove/rosmsg";
+import OsContextSingleton from "@foxglove/studio-base/OsContextSingleton";
 import {
   AdvertisePayload,
   MessageEvent,
@@ -20,20 +24,17 @@ import {
   PublishPayload,
   SubscribePayload,
   Topic,
-} from "@foxglove-studio/app/players/types";
-import { RosDatatypes } from "@foxglove-studio/app/types/RosDatatypes";
-import debouncePromise from "@foxglove-studio/app/util/debouncePromise";
-import { getTopicsByTopicName } from "@foxglove-studio/app/util/selectors";
+} from "@foxglove/studio-base/players/types";
+import { RosDatatypes } from "@foxglove/studio-base/types/RosDatatypes";
+import debouncePromise from "@foxglove/studio-base/util/debouncePromise";
+import { getTopicsByTopicName } from "@foxglove/studio-base/util/selectors";
 import {
   addTimes,
   fromMillis,
   subtractTimes,
   TimestampMethod,
   toSec,
-} from "@foxglove-studio/app/util/time";
-import { Sockets } from "@foxglove/electron-socket/renderer";
-import Logger from "@foxglove/log";
-import { RosNode, TcpSocket } from "@foxglove/ros1";
+} from "@foxglove/studio-base/util/time";
 import { HttpServer } from "@foxglove/xmlrpc";
 
 const log = Logger.getLogger(__filename);
@@ -109,7 +110,7 @@ export default class Ros1Player implements Player {
         hostname,
         pid: os.pid,
         rosMasterUri: this._url,
-        httpServer: (httpServer as unknown) as HttpServer,
+        httpServer: httpServer as unknown as HttpServer,
         tcpSocketCreate,
         log: rosLog,
       });
@@ -158,14 +159,32 @@ export default class Ros1Player implements Player {
       this.setSubscriptions(this._requestedSubscriptions);
 
       // Subscribe to all parameters
-      const params = await rosNode.subscribeAllParams();
-      if (!isEqual(params, this._parameters)) {
-        this._parameters = new Map();
-        params.forEach((value, key) => this._parameters.set(key, value));
+      try {
+        const params = await rosNode.subscribeAllParams();
+        if (!isEqual(params, this._parameters)) {
+          this._parameters = new Map();
+          params.forEach((value, key) => this._parameters.set(key, value));
+        }
+      } catch (error) {
+        this._problems.push({
+          severity: "warning",
+          message: "ROS parameter fetch failed",
+          tip: `Ensure that roscore is running and accessible at: ${this._url}`,
+          error,
+        });
       }
 
       // Fetch the full graph topology
-      await this._updateConnectionGraph(rosNode);
+      try {
+        await this._updateConnectionGraph(rosNode);
+      } catch (error) {
+        this._problems.push({
+          severity: "warning",
+          message: "ROS connection graph fetch failed",
+          tip: `Ensure that roscore is running and accessible at: ${this._url}`,
+          error,
+        });
+      }
 
       this._presence = PlayerPresence.PRESENT;
       this._emitState();
@@ -279,7 +298,7 @@ export default class Ros1Player implements Player {
       }
 
       const { datatype } = availTopic;
-      const subscription = this._rosNode.subscribe({ topic: topicName, type: datatype });
+      const subscription = this._rosNode.subscribe({ topic: topicName, dataType: datatype });
 
       subscription.on("header", (_header, msgdef, _reader) => {
         // We have to create a new object instead of just updating _providerDatatypes because it is
