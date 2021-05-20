@@ -1,5 +1,6 @@
 {
   "name": "extension-map-panel",
+  "main": "src/index.tsx",
   "dependencies": {
     "@foxglove/studio": "workspace:packages/studio",
     "leaflet": "1.7.1",

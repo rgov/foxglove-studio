@@ -1,4 +1,5 @@
 {
   "name": "@foxglove/studio",
+  "main": "src/index.ts",
   "types": "src/index.d.ts"
 }

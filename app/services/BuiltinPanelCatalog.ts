@@ -7,6 +7,7 @@ import {
   PanelCategory,
   PanelInfo,
 } from "@foxglove/studio-base/context/PanelCatalogContext";
+import { MapPanel } from "@foxglove/studio-base/extensions/Map";
 import GlobalVariableSlider from "@foxglove/studio-base/panels/GlobalVariableSlider";
 import ImageViewPanel from "@foxglove/studio-base/panels/ImageView";
 import InternalLogs from "@foxglove/studio-base/panels/InternalLogs";
@@ -38,6 +39,7 @@ const visualization: PanelInfo[] = [
   { title: "Image", component: ImageViewPanel },
   { title: "Parameters", component: ParametersPanel },
   { title: "Plot", component: Plot },
+  { title: "Map", component: MapPanel },
   { title: "Publish", component: Publish },
   { title: "Raw Messages", component: RawMessages },
   { title: "Rosout", component: Rosout },
