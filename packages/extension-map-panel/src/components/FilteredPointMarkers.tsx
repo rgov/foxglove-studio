@@ -7,7 +7,7 @@ import { Circle, useMapEvent } from "react-leaflet";
 
 import { useMessagesByTopic, MessageBlock } from "@foxglove/studio";
 
-import { NavSatFixMsg } from "./types";
+import { NavSatFixMsg } from "../types";
 
 type TopicTimePoint = {
   topic: string;

@@ -13,6 +13,7 @@
 
 import { Time } from "rosbag";
 
+import { Topic } from "@foxglove/studio";
 import { RosMsgDefinition } from "@foxglove/rosmsg";
 import { BlockCache } from "@foxglove/studio-base/dataProviders/MemoryCacheDataProvider";
 import {
@@ -24,6 +25,8 @@ import { GlobalVariables } from "@foxglove/studio-base/hooks/useGlobalVariables"
 import { RosDatatypes } from "@foxglove/studio-base/types/RosDatatypes";
 import { Range } from "@foxglove/studio-base/util/ranges";
 import { TimestampMethod } from "@foxglove/studio-base/util/time";
+
+export type { Topic };
 
 export type MessageDefinitionsByTopic = {
   [topic: string]: string;
@@ -200,22 +203,6 @@ export type PlayerStateActiveData = {
   // Used for late-parsing of binary messages. Required to cover any topic for which binary data is
   // given to panels. (May be empty for players that only provide messages parsed into objects.)
   parsedMessageDefinitionsByTopic: ParsedMessageDefinitionsByTopic;
-};
-
-// Represents a ROS topic, though the actual data does not need to come from a ROS system.
-export type Topic = {
-  // Of ROS topic format, i.e. "/some/topic". We currently depend on this slashes format a bit in
-  // `<MessageHistroy>`, though we could relax this and support arbitrary strings. It's nice to have
-  // a consistent representation for topics that people recognize though.
-  name: string;
-  // Name of the datatype (see `type PlayerStateActiveData` for details).
-  datatype: string;
-  // The original topic name, if the topic name was at some point renamed, e.g. in
-  // RenameDataProvider.
-  originalTopic?: string;
-  // The number of messages present on the topic. Valid only for sources with a fixed number of
-  // messages, such as bags.
-  numMessages?: number;
 };
 
 // A message event frames message data with the topic and receive time

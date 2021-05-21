@@ -51,6 +51,8 @@ export default (env: unknown, argv: WebpackArgv): Configuration => {
   const appWebpackConfig = makeConfig(env, argv, { allowUnusedLocals });
 
   const config: Configuration = {
+    name: "renderer",
+
     ...appWebpackConfig,
 
     // force web target instead of electron-render

@@ -7,7 +7,6 @@ import {
   PanelCategory,
   PanelInfo,
 } from "@foxglove/studio-base/context/PanelCatalogContext";
-import { MapPanel } from "@foxglove/studio-base/extensions/Map";
 import GlobalVariableSlider from "@foxglove/studio-base/panels/GlobalVariableSlider";
 import ImageViewPanel from "@foxglove/studio-base/panels/ImageView";
 import InternalLogs from "@foxglove/studio-base/panels/InternalLogs";
@@ -31,15 +30,16 @@ import URDFViewer from "@foxglove/studio-base/panels/URDFViewer";
 import WelcomePanel from "@foxglove/studio-base/panels/WelcomePanel";
 import DiagnosticStatusPanel from "@foxglove/studio-base/panels/diagnostics/DiagnosticStatusPanel";
 import DiagnosticSummary from "@foxglove/studio-base/panels/diagnostics/DiagnosticSummary";
+import MapPanel from "@foxglove/studio-base/extensions/Map";
 
 const visualization: PanelInfo[] = [
   { title: "3D", component: ThreeDimensionalViz },
   { title: `Diagnostics – Detail`, component: DiagnosticStatusPanel },
   { title: `Diagnostics – Summary`, component: DiagnosticSummary },
   { title: "Image", component: ImageViewPanel },
+  { title: "Map", component: MapPanel },
   { title: "Parameters", component: ParametersPanel },
   { title: "Plot", component: Plot },
-  { title: "Map", component: MapPanel },
   { title: "Publish", component: Publish },
   { title: "Raw Messages", component: RawMessages },
   { title: "Rosout", component: Rosout },

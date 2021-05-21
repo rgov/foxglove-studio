@@ -27,6 +27,7 @@ import {
 } from "./rosPackageResources";
 import setDevModeDockIcon from "./setDevModeDockIcon";
 import { getTelemetrySettings } from "./telemetry";
+import { registerExtensionProtocol, registerExtensionProtocolSchemes } from "./extensionLoader";
 
 const start = Date.now();
 const log = Logger.getLogger(__filename);
@@ -171,6 +172,7 @@ ipcMain.handle("getUserDataPath", () => {
 
 // Must be called before app.ready event
 registerRosPackageProtocolSchemes();
+registerExtensionProtocolSchemes();
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -187,6 +189,7 @@ app.on("ready", async () => {
   const initialWindow = new StudioWindow([...deepLinks, ...openUrls]);
 
   registerRosPackageProtocolHandlers();
+  registerExtensionProtocol();
 
   // Only stable builds check for automatic updates
   if (process.env.NODE_ENV !== "production") {
@@ -245,7 +248,7 @@ app.on("ready", async () => {
     "script-src": `'self' 'unsafe-inline' 'unsafe-eval'`,
     "worker-src": `'self' blob:`,
     "style-src": "'self' 'unsafe-inline'",
-    "connect-src": "'self' ws: wss: http: https: x-foxglove-ros-package:",
+    "connect-src": "'self' ws: wss: http: https: x-foxglove-ros-package: x-foxglove-extension:",
     "font-src": "'self' data:",
     "img-src": "'self' data: https: x-foxglove-ros-package: x-foxglove-ros-package-converted-tiff:",
   };

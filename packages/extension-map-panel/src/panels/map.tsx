@@ -4,18 +4,19 @@
 
 import { Map as LeafMap } from "leaflet";
 import { useEffect, useMemo, useState } from "react";
+
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useThrottle } from "react-use";
 
 import Logger from "@foxglove/log";
 import { useBlocksByTopic, useDataSourceInfo, useMessagesByTopic } from "@foxglove/studio";
-import EmptyState from "@foxglove/studio-base/components/EmptyState";
 
-import FilteredPointMarkers from "./FilteredPointMarkers";
-import { NavSatFixMsg, Point } from "./types";
+import FilteredPointMarkers from "../components/FilteredPointMarkers";
+import { NavSatFixMsg, Point } from "../types";
 
 import "leaflet/dist/leaflet.css";
 
+// fixme - log should come from @foxglove/studio
 const log = Logger.getLogger(__filename);
 
 // persisted panel state
@@ -131,32 +132,26 @@ function MapPanel(props: Props): JSX.Element {
   }, [currentMap, saveConfig]);
 
   if (!center) {
-    return (
-      <>
-        <EmptyState>Waiting for first gps point...</EmptyState>
-      </>
-    );
+    return <div>Waiting for first gps point...</div>;
   }
 
   return (
-    <>
-      <MapContainer
-        whenCreated={setCurrentMap}
-        preferCanvas
-        style={{ width: "100%", height: "100%" }}
-        center={[center.lat, center.lon]}
-        zoom={config.zoomLevel ?? 15}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          maxNativeZoom={18}
-          maxZoom={24}
-        />
-        <FilteredPointMarkers messages={navMessages} blocks={throttledBlocks} />
-      </MapContainer>
-    </>
+    <MapContainer
+      whenCreated={setCurrentMap}
+      preferCanvas
+      style={{ width: "100%", height: "100%" }}
+      center={[center.lat, center.lon]}
+      zoom={config.zoomLevel ?? 15}
+      scrollWheelZoom={false}
+    >
+      <TileLayer
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        maxNativeZoom={18}
+        maxZoom={24}
+      />
+      <FilteredPointMarkers messages={navMessages} blocks={throttledBlocks} />
+    </MapContainer>
   );
 }
 

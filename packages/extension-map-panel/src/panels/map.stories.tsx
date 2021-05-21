@@ -2,8 +2,10 @@
 // License, v2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
-import { Story, StoryContext } from "@storybook/react";
+// import { Story, StoryContext } from "@storybook/react";
 
+// fixme - can't have studio-base imports in extensions
+/*
 import PanelSetup from "@foxglove/studio-base/stories/PanelSetup";
 
 import MapPanel from "./index";
@@ -52,3 +54,4 @@ SinglePoint.parameters = {
     },
   },
 };
+*/

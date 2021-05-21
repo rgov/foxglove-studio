@@ -4,9 +4,29 @@
 
 import { Time } from "rosbag";
 
-// fixme - need to hoist these out of studio-base
-import { Topic } from "@foxglove/studio-base/players/types";
-import { RosDatatypes } from "@foxglove/studio-base/types/RosDatatypes";
+export type RosDatatype = {
+  fields: RosMsgField[];
+};
+
+export type RosDatatypes = {
+  [key: string]: RosDatatype;
+};
+
+// Represents a ROS topic, though the actual data does not need to come from a ROS system.
+export type Topic = {
+  // Of ROS topic format, i.e. "/some/topic". We currently depend on this slashes format a bit in
+  // `<MessageHistroy>`, though we could relax this and support arbitrary strings. It's nice to have
+  // a consistent representation for topics that people recognize though.
+  name: string;
+  // Name of the datatype (see `type PlayerStateActiveData` for details).
+  datatype: string;
+  // The original topic name, if the topic name was at some point renamed, e.g. in
+  // RenameDataProvider.
+  originalTopic?: string;
+  // The number of messages present on the topic. Valid only for sources with a fixed number of
+  // messages, such as bags.
+  numMessages?: number;
+};
 
 // Metadata about the source of data currently being displayed.
 // This is not expected to change often, usually when changing data sources.
