@@ -20,7 +20,7 @@ export default (_: unknown, argv: WebpackArgv): Configuration => {
 
     context: path.resolve(__dirname, "..", "packages", "extension-map-panel"),
     entry: {
-      "map/map": "./src/panels/map.tsx",
+      "map/index": "./src/index.ts",
     },
     target: "web",
     devtool: isDev ? "eval-cheap-module-source-map" : "source-map",

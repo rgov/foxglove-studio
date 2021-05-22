@@ -15,7 +15,7 @@ export function registerExtensionProtocol(): void {
   protocol.registerStringProtocol("x-foxglove-extension", async (request, callback) => {
     try {
       const content = fs.readFileSync(
-        path.resolve(__dirname, "..", "extensions", "map", "map.js"),
+        path.resolve(__dirname, "..", "extensions", "map", "index.js"),
         {
           encoding: "utf-8",
         },

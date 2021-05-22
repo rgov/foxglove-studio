@@ -9,5 +9,13 @@
   },
   "devDependencies": {
     "@types/leaflet": "1.7.0"
+  },
+  "foxglove-studio": {
+    "panels": [
+      {
+        "name": "map",
+        "help": "./src/panels/map.md"
+      }
+    ]
   }
 }

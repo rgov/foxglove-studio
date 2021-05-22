@@ -15,6 +15,7 @@ import {
 
 import Panel from "@foxglove/studio-base/components/Panel";
 import PanelToolbar from "@foxglove/studio-base/components/PanelToolbar";
+import { ExtensionActivate } from "@foxglove/studio";
 
 // fixme - help should be loaded via fetch as well from the extension?
 // maybe when loading the panel we get both results back?
@@ -25,12 +26,20 @@ const MapPanelExtension = lazy(async () => {
   const src = await res.text();
 
   const fn = new Function("react", "React", "reactDom", "studio", `${src}; return entrypoint`);
-  const module = fn(React, React, ReactDom, {
+  const extension = fn(React, React, ReactDom, {
     useDataSourceInfo,
     useBlocksByTopic,
     useMessagesByTopic,
   });
-  return module;
+  const ctx = {
+    registerPanel: (name: string, loadPanel: () => Promise<unknown>) => {
+      console.log("registering panel", name);
+    },
+  };
+  (extension.activate as ExtensionActivate)(ctx);
+
+  console.log(extension);
+  return extension;
 });
 
 type Config = {

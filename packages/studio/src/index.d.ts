@@ -78,3 +78,11 @@ interface UseBlocksByTopic {
 export const useMessagesByTopic: UseMessagesByTopic;
 export const useDataSourceInfo: UseDataSourceInfo;
 export const useBlocksByTopic: UseBlocksByTopic;
+
+interface ExtensionContext {
+  registerPanel(name: string, panel: () => Promise<unknown>);
+}
+
+interface ExtensionActivate {
+  (ctx: ExtensionContext): void;
+}
