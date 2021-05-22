@@ -1,9 +1,0 @@
-{
-  "extends": "@foxglove/tsconfig/tsconfig.base.json",
-  "include": ["./src/**/*.ts"],
-  "compilerOptions": {
-    "module": "commonjs",
-    "rootDir": "./src",
-    "outDir": "./dist"
-  }
-}

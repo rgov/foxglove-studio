@@ -5,7 +5,6 @@ env:
 
 ignorePatterns:
   - dist
-  - out
   - "packages/**/wasm/*.js"
   - "!.storybook"
   - storybook-static
