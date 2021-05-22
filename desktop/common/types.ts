@@ -49,8 +49,8 @@ interface Desktop {
   // Get an array of deep links provided on app launch
   getDeepLinks: () => string[];
 
-  // Get an array of available extension URIs and parsed package.json files
-  getExtensions: () => Promise<{ uri: string; packageJson: unknown }[]>;
+  // Get an array of available extensions and parsed package.json files
+  getExtensions: () => Promise<{ name: string; packageJson: unknown }[]>;
 }
 
 export type { NativeMenuBridge, Storage, StorageContent, Desktop };

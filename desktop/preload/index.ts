@@ -7,7 +7,7 @@ import { contextBridge, ipcRenderer } from "electron";
 import { readdir, readFile } from "fs/promises";
 import { machineId } from "node-machine-id";
 import os from "os";
-import { dirname, join as pathJoin } from "path";
+import { join as pathJoin } from "path";
 
 import { PreloaderSockets } from "@foxglove/electron-socket/preloader";
 import Logger from "@foxglove/log";
@@ -16,7 +16,6 @@ import { NetworkInterface, OsContext } from "@foxglove/studio-base/OsContext";
 import pkgInfo from "../../package.json";
 import { Desktop, ForwardedMenuEvent, NativeMenuBridge, Storage } from "../common/types";
 import LocalFileStorage from "./LocalFileStorage";
-import { fileUrl } from "./fileUrl";
 
 const log = Logger.getLogger(__filename);
 
@@ -108,8 +107,8 @@ const desktopBridge: Desktop = {
   getDeepLinks: (): string[] => {
     return window.process.argv.filter((arg) => arg.startsWith("foxglove://"));
   },
-  getExtensions: async (): Promise<{ uri: string; packageJson: unknown }[]> => {
-    const extensions: { uri: string; packageJson: unknown }[] = [];
+  getExtensions: async (): Promise<{ name: string; packageJson: unknown }[]> => {
+    const extensions: { name: string; packageJson: unknown }[] = [];
 
     const homePath = (await ipcRenderer.invoke("getHomePath")) as string;
     const rootFolder = pathJoin(homePath, ".foxglove-studio", "extensions");
@@ -122,9 +121,7 @@ const desktopBridge: Desktop = {
           const packageJson = JSON.parse(packageData);
           const entryPoint = packageJson.module;
           if (typeof entryPoint === "string" && entryPoint.length > 0) {
-            const entryPointPath = pathJoin(dirname(packagePath), entryPoint);
-            const uri = fileUrl(entryPointPath);
-            extensions.push({ uri, packageJson });
+            extensions.push({ name: entry.name, packageJson });
           }
         } catch {
           // ignore

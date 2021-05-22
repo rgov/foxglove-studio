@@ -5,18 +5,15 @@
 import { PropsWithChildren, useMemo } from "react";
 
 import Logger from "@foxglove/log";
-import { Extensions } from "@foxglove/studio-base/Extensions";
-import ExtensionsContext from "@foxglove/studio-base/context/ExtensionsContext";
+import ExtensionsContext, { Extension } from "@foxglove/studio-base/context/ExtensionsContext";
 
-interface Desktop {
-  getExtensions: () => Promise<{ uri: string; packageJson: unknown }[]>;
-}
+import { Desktop } from "../../common/types";
 
 const log = Logger.getLogger(__filename);
 const desktopBridge = (global as { desktopBridge?: Desktop }).desktopBridge;
 
 export default function ExtensionsProvider(props: PropsWithChildren<unknown>): JSX.Element {
-  const extensions = useMemo(() => new Extensions(), []);
+  const extensions = useMemo(() => [], []);
 
   useMemo(async () => {
     const extensionList = (await desktopBridge?.getExtensions()) ?? [];
@@ -25,12 +22,14 @@ export default function ExtensionsProvider(props: PropsWithChildren<unknown>): J
       return;
     }
 
+    return [] as Extension[];
+
     // Start loading extension code asynchronously
-    await extensions.load(extensionList);
+    //await extensions.load(extensionList);
 
     // Once all extension code is loaded, call the activate() method for all extensions
-    extensions.activate();
-  }, [extensions]);
+    //extensions.activate();
+  }, []);
 
   return (
     <ExtensionsContext.Provider value={extensions}>{props.children}</ExtensionsContext.Provider>

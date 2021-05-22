@@ -3,12 +3,16 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 import { createContext, useContext } from "react";
+import { ExtensionContext } from "@foxglove/studio";
 
-import { Extensions } from "@foxglove/studio-base/Extensions";
+export type Extension = {
+  name: string;
+  activate(context: ExtensionContext): void;
+};
 
-const ExtensionsContext = createContext<Extensions | undefined>(undefined);
+const ExtensionsContext = createContext<Extension[] | undefined>(undefined);
 
-export function useExtensions(): Extensions {
+export function useExtensions(): Extension[] {
   const extensions = useContext(ExtensionsContext);
   if (extensions == undefined) {
     throw new Error("An ExtensionsContext provider is required to useExtensions");
