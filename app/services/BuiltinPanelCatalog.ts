@@ -31,6 +31,7 @@ import URDFViewer from "@foxglove/studio-base/panels/URDFViewer";
 import WelcomePanel from "@foxglove/studio-base/panels/WelcomePanel";
 import DiagnosticStatusPanel from "@foxglove/studio-base/panels/diagnostics/DiagnosticStatusPanel";
 import DiagnosticSummary from "@foxglove/studio-base/panels/diagnostics/DiagnosticSummary";
+import Theora from "@foxglove/studio-base/panels/Theora";
 
 const visualization: PanelInfo[] = [
   { title: "3D", component: ThreeDimensionalViz },
@@ -47,6 +48,7 @@ const visualization: PanelInfo[] = [
   { title: "Table", component: Table },
   { title: "URDF Viewer", component: URDFViewer },
   { title: "Topic Graph", component: TopicGraph },
+  { title: "Theora", component: Theora },
 ];
 
 const utility: PanelInfo[] = [

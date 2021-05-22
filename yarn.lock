@@ -2292,6 +2292,7 @@ __metadata:
     moment-timezone: 0.5.33
     monaco-editor: 0.24.0
     natsort: 2.0.2
+    ogv: 1.8.1
     panzoom: 9.4.2
     prettier: 2.3.0
     promise-queue: 2.2.5
@@ -5065,6 +5066,12 @@ __metadata:
   checksum: 87d4ffa194c38e96b5f7a354ec28b1f628199326a01d8e9c78b975b44a66a1fb93ac423d3258c9ef7247408e6ebd4064c889cd420d17a4a019adcff366c46e45
   languageName: node
   linkType: hard
+
+"@types/ogv@workspace:packages/@types/ogv":
+  version: 0.0.0-use.local
+  resolution: "@types/ogv@workspace:packages/@types/ogv"
+  languageName: unknown
+  linkType: soft
 
 "@types/overlayscrollbars@npm:^1.12.0":
   version: 1.12.0
@@ -18821,6 +18828,15 @@ __metadata:
   version: 1.1.2
   resolution: "obuf@npm:1.1.2"
   checksum: aa741387b0f5dc2b8addec7cd0e05448d8b2892b6e76e167e18a5b90f0b85bd4c9be4c7be01a354dee3353f5c3367b08006adb06e0737d6a8f1b88618147715a
+  languageName: node
+  linkType: hard
+
+"ogv@npm:1.8.1":
+  version: 1.8.1
+  resolution: "ogv@npm:1.8.1"
+  dependencies:
+    "@babel/runtime": ^7.3.1
+  checksum: b972b255312c6e1dfe07a4c5bb24642b7d6e5d2e120b6cdadcf602776509ed13522869242e91fedc5e555354b29a22c8174a6aba69b7f1bedab6af4cfc4c9f1f
   languageName: node
   linkType: hard
 
