@@ -19,6 +19,7 @@ import StateTransitions from "./StateTransitions";
 import SubscribeToList from "./SubscribeToList";
 import Tab from "./Tab";
 import Table from "./Table";
+import TheoraPlayer from "./TheoraPlayer";
 import ThreeDimensionalViz from "./ThreeDimensionalViz";
 import TopicGraph from "./TopicGraph";
 import URDFViewer from "./URDFViewer";
@@ -31,6 +32,7 @@ const builtin = [
   { title: `Diagnostics – Detail`, component: DiagnosticStatusPanel },
   { title: `Diagnostics – Summary`, component: DiagnosticSummary },
   { title: "Image", component: ImageViewPanel },
+  { title: "Theora", component: TheoraPlayer },
   { title: "Map", component: MapPanel },
   { title: "Parameters", component: ParametersPanel },
   { title: "Plot", component: Plot },

@@ -2772,6 +2772,7 @@ __metadata:
     moment-timezone: 0.5.33
     monaco-editor: 0.24.0
     natsort: 2.0.2
+    ogv: 1.8.1
     panzoom: 9.4.2
     prettier: 2.3.0
     promise-queue: 2.2.5
@@ -2827,6 +2828,7 @@ __metadata:
     uuid: 8.3.2
     wasm-lz4: 1.0.0
     xacro-parser: 0.3.1
+    yuv-canvas: 1.2.6
   languageName: unknown
   linkType: soft
 
@@ -5645,6 +5647,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/ogv@workspace:packages/@types/ogv":
+  version: 0.0.0-use.local
+  resolution: "@types/ogv@workspace:packages/@types/ogv"
+  languageName: unknown
+  linkType: soft
+
 "@types/overlayscrollbars@npm:^1.12.0":
   version: 1.12.0
   resolution: "@types/overlayscrollbars@npm:1.12.0"
@@ -6255,6 +6263,12 @@ __metadata:
   checksum: de89460f6bc272f9169013f1b8add1b46e4f0740b74700d6b3422078a2f3b38de7993c24e4752312f549406898451f4de8598b4168d2a4a6f546fa9bdc09c959
   languageName: node
   linkType: hard
+
+"@types/yuv-canvas@workspace:packages/@types/yuv-canvas":
+  version: 0.0.0-use.local
+  resolution: "@types/yuv-canvas@workspace:packages/@types/yuv-canvas"
+  languageName: unknown
+  linkType: soft
 
 "@typescript-eslint/eslint-plugin@npm:4.23.0":
   version: 4.23.0
@@ -19539,6 +19553,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ogv@npm:1.8.1":
+  version: 1.8.1
+  resolution: "ogv@npm:1.8.1"
+  dependencies:
+    "@babel/runtime": ^7.3.1
+  checksum: b972b255312c6e1dfe07a4c5bb24642b7d6e5d2e120b6cdadcf602776509ed13522869242e91fedc5e555354b29a22c8174a6aba69b7f1bedab6af4cfc4c9f1f
+  languageName: node
+  linkType: hard
+
 "on-finished@npm:~2.3.0":
   version: 2.3.0
   resolution: "on-finished@npm:2.3.0"
@@ -27519,6 +27542,13 @@ typescript@4.2.4:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 096c3b40beb2804659539be1605a35c58eb0c85285f94b77b3e924f42ee265c1a40bf9f4153770039517146b469a964d51742395f35ca8135fc9f7e4982b785d
+  languageName: node
+  linkType: hard
+
+"yuv-canvas@npm:1.2.6":
+  version: 1.2.6
+  resolution: "yuv-canvas@npm:1.2.6"
+  checksum: bbaf9cb83e1a7165c26b4c866bbc043de90b78f3feee48672b8b7aabedb792a1b3999048e0efa566609062cf9186aff9c5a2a4167f0e2ac2a47dcc437738f105
   languageName: node
   linkType: hard
 
