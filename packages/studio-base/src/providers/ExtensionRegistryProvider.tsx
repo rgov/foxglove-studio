@@ -62,7 +62,9 @@ export default function ExtensionRegistryProvider(props: PropsWithChildren<unkno
       };
 
       try {
-        const unwrappedExtensionSource = await extensionLoader.loadExtension(extension.id);
+        const unwrappedExtensionSource =
+          `window.foobar = "file://${extension.directory}/dist/";`
+          + await extensionLoader.loadExtension(extension.id);
 
         // eslint-disable-next-line no-new-func
         const fn = new Function("module", "require", unwrappedExtensionSource);

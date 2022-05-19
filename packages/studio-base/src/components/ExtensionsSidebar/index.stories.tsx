@@ -32,6 +32,7 @@ export default {
 const installedExtensions: ExtensionInfo[] = [
   {
     id: "publisher.storyextension",
+    directory: "foobar/",
     name: "storyextension",
     displayName: "Extension Name",
     description: "Extension sample description",
@@ -46,6 +47,7 @@ const installedExtensions: ExtensionInfo[] = [
 const marketplaceExtensions: ExtensionInfo[] = [
   {
     id: "publisher.storyextension",
+    directory: "foobar/",
     name: "storyextension",
     displayName: "Extension Name",
     description: "Extension sample description",

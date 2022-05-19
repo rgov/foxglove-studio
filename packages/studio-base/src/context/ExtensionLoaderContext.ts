@@ -6,6 +6,7 @@ import { createContext, useContext } from "react";
 
 export type ExtensionInfo = {
   id: string;
+  directory: string;
   name: string;
   displayName: string;
   description: string;

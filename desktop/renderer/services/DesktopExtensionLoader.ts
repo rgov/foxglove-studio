@@ -24,6 +24,7 @@ export class DesktopExtensionLoader implements ExtensionLoader {
       const pkgInfo = item.packageJson as ExtensionInfo;
       return {
         id: item.id,
+        directory: item.directory,
         name: pkgInfo.displayName,
         displayName: pkgInfo.displayName,
         description: pkgInfo.description,
