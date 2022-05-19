@@ -27,7 +27,7 @@
     "byte-base64": "1.1.0",
     "sax": "1.2.4",
     "web-encoding": "1.1.5",
-    "xmlbuilder2": "2.4.1"
+    "xmlbuilder2": "3.0.2"
   },
   "devDependencies": {
     "@types/sax": "^1.2.1",
