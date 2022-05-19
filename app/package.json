@@ -66,7 +66,7 @@
     "redux-devtools-extension": "2.13.9",
     "redux-thunk": "2.3.0",
     "regl-worldview": "github:foxglove/webviz#workspace=regl-worldview&commit=6eb0e8c45eff795f8718f33bf3e10478951e7249",
-    "rehype-raw": "5.1.0",
+    "rehype-raw": "6.1.1",
     "reselect": "4.0.0",
     "rosbag": "github:foxglove/rosbag.js#6ce4e00c16b80973e270d53e9fb362a516e74e03",
     "roslib": "github:foxglove/roslibjs#364a19d5f3ada7543fac9194a50b96087c7556ba",
