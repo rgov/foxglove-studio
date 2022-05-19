@@ -122,7 +122,7 @@
     "@types/regl-worldview": "workspace:packages/@types/regl-worldview",
     "@types/roslib": "workspace:packages/@types/roslib",
     "@types/sanitize-html": "2.3.1",
-    "@types/seedrandom": "3.0.0",
+    "@types/seedrandom": "3.0.2",
     "@types/shallowequal": "1.1.1",
     "@types/string-hash": "1.1.1",
     "@types/styled-components": "5.1.9",
