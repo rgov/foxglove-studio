@@ -3,7 +3,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 import { existsSync } from "fs";
-import { mkdir, readdir, readFile, rm, writeFile } from "fs/promises";
+import { mkdir, readdir, readFile, realpath, rm, writeFile } from "fs/promises";
 import JSZip from "jszip";
 import { dirname, relative, join as pathJoin } from "path";
 
@@ -122,8 +122,8 @@ export async function getExtensionFile(
     return "";
   }
 
-  // Compute the path
-  const packagePath = pathJoin(extension.directory, file);
+  // Compute the absolute path to the resource, to avoid symlink attacks
+  const packagePath = await realpath(pathJoin(extension.directory, file));
 
   // Check that the path is actually still within the extension directory
   if (relative(extension.directory, packagePath).startsWith("../")) {
