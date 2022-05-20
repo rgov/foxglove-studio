@@ -5,7 +5,7 @@
 import { existsSync } from "fs";
 import { mkdir, readdir, readFile, rm, writeFile } from "fs/promises";
 import JSZip from "jszip";
-import { dirname, join as pathJoin } from "path";
+import { dirname, relative, join as pathJoin } from "path";
 
 import Logger from "@foxglove/log";
 
@@ -107,7 +107,11 @@ export async function getExtensions(rootFolder: string): Promise<DesktopExtensio
   return extensions;
 }
 
-export async function loadExtension(id: string, rootFolder: string): Promise<string> {
+export async function getExtensionFile(
+  id: string,
+  rootFolder: string,
+  file: string,
+): Promise<string> {
   // Find this extension
   const userExtensions = await getExtensions(rootFolder);
   const extension = userExtensions.find(
@@ -118,10 +122,32 @@ export async function loadExtension(id: string, rootFolder: string): Promise<str
     return "";
   }
 
-  const packagePath = pathJoin(extension.directory, "package.json");
+  // Compute the path
+  const packagePath = pathJoin(extension.directory, file);
+
+  // Check that the path is actually still within the extension directory
+  if (relative(extension.directory, packagePath).startsWith("../")) {
+    log.error(`Possible path traversal in ${file}`);
+    return "";
+  }
+
+  return packagePath;
+}
+
+export async function loadExtension(id: string, rootFolder: string): Promise<string> {
+  // Locate the package.json file for this extension
+  const packagePath = await getExtensionFile(id, rootFolder, "package.json");
+  if (packagePath === "") {
+    return "";
+  }
+
   const packageData = await readFile(packagePath, { encoding: "utf8" });
   const packageJson = JSON.parse(packageData) as ExtensionPackageJson;
-  const sourcePath = pathJoin(extension.directory, packageJson.main);
+  const sourcePath = await getExtensionFile(id, rootFolder, packageJson.main);
+  if (sourcePath === "") {
+    return "";
+  }
+
   return await readFile(sourcePath, { encoding: "utf-8" });
 }
 

@@ -13,6 +13,7 @@ import { AppSetting } from "@foxglove/studio-base/src/AppSetting";
 import pkgInfo from "../../package.json";
 import StudioAppUpdater from "./StudioAppUpdater";
 import StudioWindow from "./StudioWindow";
+import { registerExtensionProtocolHandlers } from "./extensionResources";
 import getDevModeIcon from "./getDevModeIcon";
 import injectFilesToOpen from "./injectFilesToOpen";
 import installChromeExtensions from "./installChromeExtensions";
@@ -212,6 +213,7 @@ function main() {
     log.debug(`Elapsed (ms) until new StudioWindow: ${Date.now() - start}`);
     const initialWindow = new StudioWindow([...deepLinks, ...openUrls]);
 
+    registerExtensionProtocolHandlers();
     registerRosPackageProtocolHandlers();
 
     // Only production builds check for automatic updates
@@ -239,13 +241,13 @@ function main() {
     // Content Security Policy
     // See: https://www.electronjs.org/docs/tutorial/security
     const contentSecurityPolicy: Record<string, string> = {
-      "default-src": "'self'",
-      "script-src": `'self' 'unsafe-inline' 'unsafe-eval'`,
-      "worker-src": `'self' blob:`,
-      "style-src": "'self' 'unsafe-inline'",
-      "connect-src": "'self' ws: wss: http: https: package:",
-      "font-src": "'self' data:",
-      "img-src": "'self' data: https: package: x-foxglove-converted-tiff:",
+      "default-src": `'self' x-foxglove-extension-rsrc:`,
+      "script-src": `'self' 'unsafe-inline' 'unsafe-eval' x-foxglove-extension-rsrc:`,
+      "worker-src": `'self' blob: x-foxglove-extension-rsrc:`,
+      "style-src": `'self' 'unsafe-inline' x-foxglove-extension-rsrc:`,
+      "connect-src": `'self' ws: wss: http: https: package:`,
+      "font-src": `'self' data: x-foxglove-extension-rsrc:`,
+      "img-src": `'self' data: https: package: x-foxglove-converted-tiff: x-foxglove-extension-rsrc:`,
     };
     const cspHeader = Object.entries(contentSecurityPolicy)
       .map(([key, val]) => `${key} ${val}`)
