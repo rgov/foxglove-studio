@@ -17,9 +17,7 @@ const NET_ERROR_FAILED = -2;
 export function registerExtensionProtocolHandlers(): void {
   protocol.registerFileProtocol("x-foxglove-extension-rsrc", (request, callback) => {
     // Split the URL into an extension ID and the resource path
-    const urlPathParts = new URL(request.url).pathname.replace(/^\/+/, "").split("/");
-    const extId = urlPathParts[0] ?? "";
-    const rsrcPath = urlPathParts.slice(1).join("/");
+    const { host: extId, pathname: rsrcPath } = new URL(request.url);
 
     const homePath = app.getPath("home");
     const userExtensionRoot = pathJoin(homePath, ".foxglove-studio", "extensions");
@@ -38,4 +36,18 @@ export function registerExtensionProtocolHandlers(): void {
         callback({ error: NET_ERROR_FAILED });
       });
   });
+}
+
+export function registerExtensionProtocolSchemes(): void {
+  protocol.registerSchemesAsPrivileged([
+    {
+      scheme: "x-foxglove-extension-rsrc",
+      privileges: {
+        // The URL scheme adheres to "generic URI syntax", with a host (i.e.,
+        // the extension's ID) and a path. This also allows resolving relative
+        // resources, like a CSS file that uses url("./icon.png")
+        standard: true,
+      },
+    },
+  ]);
 }

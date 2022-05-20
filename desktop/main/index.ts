@@ -13,7 +13,10 @@ import { AppSetting } from "@foxglove/studio-base/src/AppSetting";
 import pkgInfo from "../../package.json";
 import StudioAppUpdater from "./StudioAppUpdater";
 import StudioWindow from "./StudioWindow";
-import { registerExtensionProtocolHandlers } from "./extensionResources";
+import {
+  registerExtensionProtocolHandlers,
+  registerExtensionProtocolSchemes,
+} from "./extensionResources";
 import getDevModeIcon from "./getDevModeIcon";
 import injectFilesToOpen from "./injectFilesToOpen";
 import installChromeExtensions from "./installChromeExtensions";
@@ -194,6 +197,7 @@ function main() {
   ipcMain.handle("getHomePath", () => app.getPath("home"));
 
   // Must be called before app.ready event
+  registerExtensionProtocolSchemes();
   registerRosPackageProtocolSchemes();
 
   ipcMain.handle("updateNativeColorScheme", () => {
