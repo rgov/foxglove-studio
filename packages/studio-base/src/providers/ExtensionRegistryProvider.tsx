@@ -13,6 +13,7 @@ import ExtensionRegistryContext, {
   ExtensionRegistry,
   RegisteredPanel,
 } from "@foxglove/studio-base/context/ExtensionRegistryContext";
+import isDesktopApp from "@foxglove/studio-base/util/isDesktopApp";
 
 const log = Logger.getLogger(__filename);
 
@@ -62,7 +63,16 @@ export default function ExtensionRegistryProvider(props: PropsWithChildren<unkno
       };
 
       try {
-        const unwrappedExtensionSource = await extensionLoader.loadExtension(extension.id);
+        let pathPrefix: string;
+        if (isDesktopApp()) {
+          pathPrefix = `x-foxglove-extension-rsrc://${extension.id}`;
+        } else {
+          throw new Error("Extensions are not supported in the browser");
+        }
+
+        const unwrappedExtensionSource = (
+          await extensionLoader.loadExtension(extension.id)
+        ).replace("@FOXGLOVE_EXTENSION_PATH_PREFIX@", pathPrefix);
 
         // eslint-disable-next-line no-new-func
         const fn = new Function("module", "require", unwrappedExtensionSource);
