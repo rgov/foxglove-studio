@@ -21,7 +21,7 @@
     "cytoscape": "3.19.0",
     "cytoscape-dagre": "2.3.2",
     "fuzzysort": "1.1.4",
-    "gl-matrix": "3.3.0",
+    "gl-matrix": "3.4.3",
     "hammerjs": "2.0.8",
     "history": "5.0.0",
     "hoist-non-react-statics": "3.3.2",
