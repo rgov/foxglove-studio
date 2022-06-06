@@ -143,7 +143,7 @@
     "reg-notify-github-plugin": "0.10.15",
     "reg-publish-gcs-plugin": "0.10.15",
     "reg-simple-keygen-plugin": "0.10.15",
-    "reg-suit": "0.10.15",
+    "reg-suit": "0.11.1",
     "storycap": "3.0.4",
     "three": "0.128.0",
     "urdf-loader": "0.10.2",
