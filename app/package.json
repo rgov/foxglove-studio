@@ -35,7 +35,7 @@
     "moment-timezone": "0.5.33",
     "monaco-editor": "0.24.0",
     "natsort": "2.0.2",
-    "panzoom": "9.4.2",
+    "panzoom": "9.4.3",
     "prettier": "2.3.0",
     "promise-queue": "2.2.5",
     "quickhull3d": "2.0.4",
