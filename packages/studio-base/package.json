@@ -60,7 +60,7 @@
     "@protobufjs/base64": "1.1.2",
     "@sentry/core": "6.19.6",
     "@sentry/types": "6.19.6",
-    "@testing-library/dom": "8.11.3",
+    "@testing-library/dom": "8.13.0",
     "@testing-library/react": "12.1.2",
     "@testing-library/react-hooks": "7.0.2",
     "@types/amplitude-js": "8.16.0",
