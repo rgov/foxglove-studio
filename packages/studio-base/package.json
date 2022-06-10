@@ -155,7 +155,7 @@
     "promise-queue": "2.2.5",
     "protobufjs": "6.11.3",
     "quickhull3d": "2.0.5",
-    "rc-tree": "5.4.3",
+    "rc-tree": "5.6.5",
     "react": "17.0.2",
     "react-autocomplete": "janpaul123/react-autocomplete#bc8737070b5744069719c8fcd4e0a197192b0d48",
     "react-dom": "patch:react-dom@npm:17.0.2#../../patches/react-dom.patch",
