@@ -80,7 +80,7 @@
     "@types/moment-duration-format": "2.2.3",
     "@types/nearley": "2.11.2",
     "@types/offscreencanvas": "2019.6.4",
-    "@types/prettier": "2.4.4",
+    "@types/prettier": "2.6.3",
     "@types/promise-queue": "2.2.0",
     "@types/protobufjs": "workspace:*",
     "@types/react": "17.0.39",
