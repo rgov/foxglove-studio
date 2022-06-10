@@ -166,7 +166,7 @@
     "react-json-tree": "patch:react-json-tree@npm:0.15.1#../../patches/react-json-tree.patch",
     "react-markdown": "8.0.0",
     "react-monaco-editor": "0.46.0",
-    "react-mosaic-component": "5.0.0",
+    "react-mosaic-component": "5.1.0",
     "react-resize-detector": "7.0.0",
     "react-svg-loader": "3.0.3",
     "react-table": "7.7.0",
