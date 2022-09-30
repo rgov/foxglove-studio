@@ -309,7 +309,7 @@ function AutoUpdate(): React.ReactElement {
             onChange={(_event, checked) => void setUpdatedEnabled(checked)}
           />
         }
-        label="Send anonymized crash reports"
+        label="Check for updates automatically"
       />
     </>
   );
